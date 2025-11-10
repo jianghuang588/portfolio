@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Huang Jiang — Portfolio</title>
+  <meta name="description" content="Huang Jiang — Full‑Stack Developer portfolio." />
+  <meta name="color-scheme" content="light">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23000000'/%3E%3Ctext x='50' y='62' font-family='system-ui' font-size='48' font-weight='600' text-anchor='middle' fill='%23ffffff'%3EHJ%3C/text%3E%3C/svg%3E">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --bg: #fbfbfd;
+      --text: #1d1d1f;
+      --text-secondary: #86868b;
+      --accent: #0071e3;
+      --border: rgba(0,0,0,.06);
+      --card-bg: #ffffff;
+    }
+
+    html { 
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.47059;
+      font-size: 17px;
+      letter-spacing: -.022em;
+    }
+
+    a { 
+      color: var(--accent); 
+      text-decoration: none;
+      transition: opacity .3s cubic-bezier(.25,.1,.25,1);
+    }
+    a:hover { opacity: .6; }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(251,251,253,.72);
+      backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--border);
+      height: 44px;
+    }
+
+    .nav-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .nav-logo {
+      font-size: 21px;
+      font-weight: 600;
+      letter-spacing: -.021em;
+      color: var(--text);
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 40px;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: -.01em;
+    }
+
+    .nav-menu a {
+      color: var(--text);
+      opacity: .8;
+    }
+
+    .nav-menu a:hover {
+      opacity: 1;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 64px 22px 96px;
+      max-width: 1024px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 17px;
+      line-height: 1.23536;
+      font-weight: 600;
+      letter-spacing: .012em;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .hero-headline {
+      font-size: clamp(40px, 7vw, 64px);
+      line-height: 1.0625;
+      font-weight: 700;
+      letter-spacing: -.009em;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .hero-subhead {
+      font-size: clamp(19px, 2.5vw, 24px);
+      line-height: 1.33349;
+      font-weight: 400;
+      letter-spacing: .012em;
+      color: var(--text-secondary);
+      max-width: 640px;
+      margin: 0 auto 32px;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.42859;
+      letter-spacing: -.016em;
+      border-radius: 980px;
+      transition: all .3s cubic-bezier(.25,.1,.25,1);
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      opacity: 1;
+      background: #0077ED;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+
+    .btn-secondary:hover {
+      opacity: 1;
+      background: var(--accent);
+      color: white;
+    }
+
+    /* Section */
+    .section {
+      padding: 64px 22px;
+      max-width: 1024px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-eyebrow {
+      font-size: 12px;
+      line-height: 1.33337;
+      font-weight: 600;
+      letter-spacing: -.01em;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-headline {
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.08349;
+      font-weight: 700;
+      letter-spacing: -.003em;
+      color: var(--text);
+    }
+
+    /* Projects Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: all .45s cubic-bezier(.25,.1,.25,1);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 24px rgba(0,0,0,.12), 0 0 0 1px rgba(0,0,0,.04);
+    }
+
+    .card-image {
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      position: relative;
+      background: #f5f5f7;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .7s cubic-bezier(.25,.1,.25,1);
+    }
+
+    .card:hover .card-image img {
+      transform: scale(1.05);
+    }
+
+    .card-content {
+      padding: 24px 20px 28px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-title {
+      font-size: 21px;
+      line-height: 1.19048;
+      font-weight: 600;
+      letter-spacing: .011em;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      line-height: 1.42859;
+      font-weight: 400;
+      letter-spacing: -.016em;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      line-height: 1.42859;
+      font-weight: 400;
+      letter-spacing: -.016em;
+      color: var(--accent);
+      margin-top: auto;
+    }
+
+    .card-link svg {
+      width: 12px;
+      height: 12px;
+      transition: transform .3s ease;
+    }
+
+    .card-link:hover svg {
+      transform: translateX(2px);
+    }
+
+    /* Contact */
+    .contact-box {
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 56px 40px;
+      text-align: center;
+      margin: 64px 0;
+      border: 1px solid var(--border);
+    }
+
+    .contact-headline {
+      font-size: 32px;
+      line-height: 1.125;
+      font-weight: 600;
+      letter-spacing: .004em;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .contact-subhead {
+      font-size: 17px;
+      line-height: 1.47059;
+      font-weight: 400;
+      letter-spacing: -.022em;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+    }
+
+    .contact-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Footer */
+    footer {
+      padding: 17px 22px;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.33337;
+      font-weight: 400;
+      letter-spacing: -.01em;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border);
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: rgba(0,0,0,.92);
+      backdrop-filter: blur(20px);
+      color: white;
+      padding: 14px 24px;
+      border-radius: 100px;
+      font-size: 14px;
+      line-height: 1.42859;
+      letter-spacing: -.016em;
+      opacity: 0;
+      transition: all .4s cubic-bezier(.25,.1,.25,1);
+      z-index: 2000;
+      box-shadow: 0 4px 16px rgba(0,0,0,.2);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 734px) {
+      nav { height: 48px; }
+      .nav-menu { gap: 24px; font-size: 11px; }
+      .hero { padding: 48px 22px 72px; }
+      .section { padding: 48px 22px; }
+      .grid { grid-template-columns: 1fr; gap: 20px; }
+      .contact-box { padding: 40px 24px; }
+    }
+
+    @media (min-width: 735px) and (max-width: 1068px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1069px) {
+      .grid { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo">HJ</div>
+      <div class="nav-menu">
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-eyebrow">Full‑Stack Developer</div>
+    <h1 class="hero-headline">Huang Jiang</h1>
+    <p class="hero-subhead">Crafting exceptional digital experiences with clean code and modern design.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="mailto:jianghuang588@gmail.com">Email me</a>
+      <a class="btn btn-secondary" href="https://github.com/jianghuang588" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn-secondary" href="https://www.linkedin.com/in/huangjiang" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="section-header">
+      <div class="section-eyebrow">Portfolio</div>
+      <h2 class="section-headline">Featured Work</h2>
+    </div>
+    
+    <div class="grid">
+      
+      <article class="card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop" alt="Beaconfire Inc" loading="lazy">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">BeaconFire Inc</h3>
+          <p class="card-desc">Modern corporate website with responsive design and smooth user experience. Built with focus on clean UI and professional presentation.</p>
+          <a class="card-link" href="https://beaconfireinc.com/" target="_blank" rel="noopener">
+            Visit site
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=500&fit=crop" alt="Meavana" loading="lazy">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Meavana Browser Extension</h3>
+          <p class="card-desc">Chrome extension providing personalized browsing experience. Integrated APIs and modern frontend for seamless user interaction.</p>
+          <a class="card-link" href="https://www.meavana.com/" target="_blank" rel="noopener">
+            Visit site
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=500&fit=crop" alt="E-commerce Platform" loading="lazy">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">E‑commerce Platform</h3>
+          <p class="card-desc">Full‑featured online shopping platform with cart management, checkout flow, and user authentication. Clean, intuitive shopping experience.</p>
+          <a class="card-link" href="https://github.com/jianghuang588/E-commerce_Website" target="_blank" rel="noopener">
+            View code
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=500&fit=crop" alt="DarkWater Project" loading="lazy">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Project DarkWater</h3>
+          <p class="card-desc">Production-ready application solving real business challenges. Built with modern architecture and clean code practices.</p>
+          <a class="card-link" href="https://github.com/jianghuang588/Project-DarkWater-Intern-Project-" target="_blank" rel="noopener">
+            View code
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=500&fit=crop" alt="QIWI Payment Integration" loading="lazy">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">QIWI Payment Integration</h3>
+          <p class="card-desc">Payment gateway integration with secure transaction handling. Focused on API consumption and reliable payment processing.</p>
+          <a class="card-link" href="https://github.com/jianghuang588/QIWI_PROJECT" target="_blank" rel="noopener">
+            View code
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=800&h=500&fit=crop" alt="Movie Discovery App" loading="lazy">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Movie Discovery App</h3>
+          <p class="card-desc">Clean movie browsing interface with search, filters, and detailed views. Consumes external API for real-time movie data.</p>
+          <a class="card-link" href="https://github.com/jianghuang588/Movie_App" target="_blank" rel="noopener">
+            View code
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="contact-box">
+      <h2 class="contact-headline">Let's work together</h2>
+      <p class="contact-subhead">Open to new opportunities and collaborations.</p>
+      <div class="contact-actions">
+        <a class="btn btn-primary" href="mailto:jianghuang588@gmail.com">Send email</a>
+        <button class="btn btn-secondary" id="copyBtn">Copy email</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© <span id="year"></span> Huang Jiang. All rights reserved.</p>
+  </footer>
+
+  <div class="toast" id="toast">Email copied to clipboard</div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.getElementById('copyBtn').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('jianghuang588@gmail.com');
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2400);
+      } catch (e) {
+        alert('jianghuang588@gmail.com');
+      }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(24px)';
+      card.style.transition = 'opacity .8s cubic-bezier(.25,.1,.25,1), transform .8s cubic-bezier(.25,.1,.25,1)';
+      observer.observe(card);
+    });
+  </script>
+
+</body>
+</html>
